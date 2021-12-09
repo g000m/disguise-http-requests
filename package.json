@@ -1,0 +1,11 @@
+
+{
+  "name": "disguise",
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "author": "Gabe Herbert",
+  "scripts" : {
+  },
+  "devDependencies": {
+  }
+}
