@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:     Disguise
- * Plugin URI:      PLUGIN SITE HERE
- * Description:     Disguise the origin of http requests
+ * Plugin URI:      https://github.com/g000m/disguise-http-requests
+ * Description:     Disguise the origin of http requests. Designed to allow Satispress to retrieve updates in the name of a licensed host.
  * Author:          Gabe Herbert
  * Author URI:      https://gabeherbert.com
  * Text Domain:     disguise
