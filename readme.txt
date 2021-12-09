@@ -1,7 +1,7 @@
 === Disguise ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://example.com/
-Tags: comments, spam
+Contributors: Gabe462
+Donate link: https://gabeherbert.com/
+Tags: git, deployment, http
 Requires at least: 4.5
 Tested up to: 5.8.2
 Requires PHP: 5.6
