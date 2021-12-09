@@ -6,8 +6,10 @@ add_action( 'init', function () {
 	add_filter( 'http_request_args', 'Disguise\disguise_request_args', 10, 2 );
 
 	// @TODO pass these in via settings
-	remove_filter( 'admin_notices', [ \BuddyBossApp\Build::instance(), 'app_core_version_admin_notice' ] );
-	remove_filter( 'admin_notices', [ \BuddyBossApp\Admin\Build\Build::instance(), 'admin_notices' ] );
+	if ( class_exists( '\BuddyBossApp\Build' ) && class_exists( '\BuddyBossApp\Admin\Build\Build' ) ) {
+		remove_filter( 'admin_notices', [ \BuddyBossApp\Build::instance(), 'app_core_version_admin_notice' ] );
+		remove_filter( 'admin_notices', [ \BuddyBossApp\Admin\Build\Build::instance(), 'admin_notices' ] );
+	}
 } );
 
 
