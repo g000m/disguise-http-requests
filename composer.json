@@ -1,6 +1,7 @@
 {
   "name": "g000m/disguise-http-requests",
   "type": "wordpress-plugin",
+  "homepage": "https://github.com/g000m/disguise-http-requests",
   "license": "GPLv3",
   "autoload": {
     "psr-4": {
