@@ -1,10 +1,12 @@
-
 {
-  "name": "disguise",
+  "name": "disguise-http-requests",
   "version": "0.1.0",
-  "main": "Gruntfile.js",
   "author": "Gabe Herbert",
-  "scripts" : {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/g000m/disguise-http-requests.git"
+  },
+  "scripts": {
   },
   "devDependencies": {
   }

@@ -1,0 +1,17 @@
+{
+  "name": "g000m/disguise-http-requests",
+  "type": "wordpress-plugin",
+  "license": "GPLv3",
+  "autoload": {
+    "psr-4": {
+      "Disguise\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Gabe Herbert",
+      "email": "gh@gabeherbert.com"
+    }
+  ],
+  "require": {}
+}
