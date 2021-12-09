@@ -8,6 +8,7 @@
  * Text Domain:     disguise
  * Domain Path:     /languages
  * Version:         0.1.0
+ * GitHub Plugin URI: g000m/disguise-http-requests
  *
  * @package         Disguise
  */
