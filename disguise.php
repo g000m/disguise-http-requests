@@ -12,18 +12,20 @@
  * @package         Disguise
  */
 
-use BuddyBossApp\Build;
-use BuddyBossApp\Admin\Build\Build as AdminBuild;
 
 add_action( 'init', function () {
-	add_filter( 'http_request_args', 'filter_request_args', 10, 2 );
+	add_filter( 'http_request_args', 'disguise_request_args', 10, 2 );
 
-	remove_filter( 'admin_notices', [ Build::instance(), 'app_core_version_admin_notice' ] );
-	remove_filter( 'admin_notices', [ AdminBuild::instance(), 'admin_notices' ] );
+	// @TODO pass these in via settings
+	remove_filter( 'admin_notices', [ BuddyBossApp\Build::instance(), 'app_core_version_admin_notice' ] );
+	remove_filter( 'admin_notices', [ BuddyBossApp\Admin\Build\Build::instance(), 'admin_notices' ] );
 } );
 
 
-function filter_request_args( $args, $url ) {
+function disguise_request_args( $args, $url ) {
+	// @TODO add matched urls via settings
+	// @TODO add support for partial matches
+
 	$urls  = [
 		'buddyboss' => [
 			'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
