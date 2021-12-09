@@ -1,7 +1,11 @@
 {
   "name": "disguise-http-requests",
   "version": "0.1.0",
-  "author": "Gabe Herbert",
+  "author": {
+    "name": "Gabe Herbert",
+    "email": "gh@gabeherbert.com",
+    "url": "https://gabeherbert.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/g000m/disguise-http-requests.git"

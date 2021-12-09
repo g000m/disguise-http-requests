@@ -11,7 +11,8 @@
   "authors": [
     {
       "name": "Gabe Herbert",
-      "email": "gh@gabeherbert.com"
+      "email": "gh@gabeherbert.com",
+      "homepage": "https://gabeherbert.com"
     }
   ],
   "require": {}
