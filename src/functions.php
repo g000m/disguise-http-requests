@@ -14,15 +14,32 @@ add_action( 'init', function () {
 
 
 function disguise_request_args( $args, $url ) {
+	//bb-integration
+	//page-family-enqueue
+	//eh-mods
+	//bbapp-page-html-shortcodes
+
+	//accessally
+	//accessally-user-migration
+	//cf7-zendesk-pro
+	//optimizePressPlugin
+	//optimizePressExperiments
+	//optimizePressHelperTools
+	//optimizePressPlusPack
+	//progressally
+	//wpgdprPro_r4duTI
+
+	// block
+	// http://23.23.102.166/sl/public/api/ping
+
 	// @TODO add matched urls via settings
 	// @TODO add support for partial matches
 
 	$urls  = [
-		'buddyboss' => [
 			'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
 			'https://update.buddyboss.com/theme',
 			'https://update.buddyboss.com/plugin',
-		]
+			'http://23.23.102.166/sl/public/api/*'
 	];
 	$hosts = array(
 		'local'    => str_replace( [ 'https://', 'http://' ], '', home_url() ),
@@ -31,13 +48,31 @@ function disguise_request_args( $args, $url ) {
 
 	$args2 = $args;
 
-	if ( in_array( $url, $urls['buddyboss'] ) ) {
+	if ( matched_url( $url, $urls ) ) {
 		array_walk_recursive( $args2, fix_hostnames(), $hosts );
 
 		return $args2;
 	}
 
 	return $args;
+}
+
+/**
+ * @param $url
+ * @param array $urls
+ *
+ * @return bool
+ */
+function matched_url( $requested_url, array $urls ): bool {
+	foreach ($urls as $url) {
+		// if wildcard URL
+		if (substr($url, -1) === "*") {
+			$url_search = substr_replace( $url, "", -1);
+			return (strpos($requested_url, $url_search) === 0);
+		}
+	}
+	//match URL in list
+	return ( in_array( $requested_url, $urls ) );
 }
 
 /**
