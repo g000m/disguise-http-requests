@@ -40,8 +40,7 @@ function disguise_request_args( $args, $url ) {
 		'https://update.buddyboss.com/theme',
 		'https://update.buddyboss.com/plugin',
 		'http://23.23.102.166/sl/public/api/*',
-		'http://members.ambitionally.com/hosted_plugin/accessally/',
-		'http://members.ambitionally.com/hosted_plugin/accessally/*'
+		'http://members.ambitionally.com/hosted_plugin/*'
 	];
 	$hosts = array(
 		'local'    => str_replace( [ 'https://', 'http://' ], '', home_url() ),
