@@ -39,7 +39,9 @@ function disguise_request_args( $args, $url ) {
 			'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
 			'https://update.buddyboss.com/theme',
 			'https://update.buddyboss.com/plugin',
-			'http://23.23.102.166/sl/public/api/*'
+			'http://23.23.102.166/sl/public/api/*',
+			'http://members.ambitionally.com/hosted_plugin/accessally/',
+			'http://members.ambitionally.com/hosted_plugin/accessally/*'
 	];
 	$hosts = array(
 		'local'    => str_replace( [ 'https://', 'http://' ], '', home_url() ),
@@ -64,15 +66,22 @@ function disguise_request_args( $args, $url ) {
  * @return bool
  */
 function matched_url( $requested_url, array $urls ): bool {
+	//quick check for URL in list
+	if ( in_array( $requested_url, $urls ) ) {
+		return true;
+	}
+
 	foreach ($urls as $url) {
 		// if wildcard URL
 		if (substr($url, -1) === "*") {
 			$url_search = substr_replace( $url, "", -1);
-			return (strpos($requested_url, $url_search) === 0);
+			if (strpos($requested_url, $url_search) === 0) {
+				return true;
+			}
 		}
 	}
-	//match URL in list
-	return ( in_array( $requested_url, $urls ) );
+
+	return false;
 }
 
 /**
