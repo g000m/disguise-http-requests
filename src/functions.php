@@ -36,12 +36,12 @@ function disguise_request_args( $args, $url ) {
 	// @TODO add support for partial matches
 
 	$urls  = [
-			'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
-			'https://update.buddyboss.com/theme',
-			'https://update.buddyboss.com/plugin',
-			'http://23.23.102.166/sl/public/api/*',
-			'http://members.ambitionally.com/hosted_plugin/accessally/',
-			'http://members.ambitionally.com/hosted_plugin/accessally/*'
+		'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
+		'https://update.buddyboss.com/theme',
+		'https://update.buddyboss.com/plugin',
+		'http://23.23.102.166/sl/public/api/*',
+		'http://members.ambitionally.com/hosted_plugin/accessally/',
+		'http://members.ambitionally.com/hosted_plugin/accessally/*'
 	];
 	$hosts = array(
 		'local'    => str_replace( [ 'https://', 'http://' ], '', home_url() ),
@@ -71,11 +71,11 @@ function matched_url( $requested_url, array $urls ): bool {
 		return true;
 	}
 
-	foreach ($urls as $url) {
+	foreach ( $urls as $url ) {
 		// if wildcard URL
-		if (substr($url, -1) === "*") {
-			$url_search = substr_replace( $url, "", -1);
-			if (strpos($requested_url, $url_search) === 0) {
+		if ( substr( $url, - 1 ) === "*" ) {
+			$url_search = substr_replace( $url, "", - 1 );
+			if ( strpos( $requested_url, $url_search ) === 0 ) {
 				return true;
 			}
 		}
