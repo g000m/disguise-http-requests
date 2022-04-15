@@ -39,6 +39,7 @@ function disguise_request_args( $args, $url ) {
 		'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
 		'https://update.buddyboss.com/theme',
 		'https://update.buddyboss.com/plugin',
+		'https://appcenter.buddyboss.com/wp-json/center/v1/update-app-info',
 		'http://23.23.102.166/sl/public/api/*',
 		'http://members.ambitionally.com/hosted_plugin/*'
 	];
