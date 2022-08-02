@@ -89,9 +89,9 @@ function matched_url( $requested_url, array $urls ): bool {
  */
 function fix_hostnames(): \Closure {
 	return function ( &$value, $key, $host ) {
-
-		if ( strpos( $value, $host['local'] ) !== false && $key !== "sslcertificates" && ! is_serialized( $value ) ) {
+		if ( gettype( $host['local'] ) === 'string' && gettype( $value ) === 'string' && strpos( $value, $host['local'] ) !== false && $key !== "sslcertificates" && ! is_serialized( $value ) ) {
 			$value = str_replace( $host['local'], $host['licensed'], $value );
+
 		} elseif ( is_serialized( $value ) ) {
 			$unserialized_value = unserialize( $value );
 			// run this recursively
