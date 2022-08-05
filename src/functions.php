@@ -32,9 +32,8 @@ function disguise_request_args( $args, $url ) {
 	// block
 	// http://23.23.102.166/sl/public/api/ping
 
-	// @TODO add matched urls via settings
-	// @TODO add support for partial matches
 
+	// @TODO make these cacheable
 	$disguises_options = get_option( 'disguises_option_name' ); // Array of All Options
 	$production_domain = wp_http_validate_url($disguises_options['production_domain_0']); // Production domain
 

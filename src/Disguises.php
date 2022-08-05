@@ -80,8 +80,9 @@ class Disguises {
 			$sanitary_values['production_domain_0'] = wp_http_validate_url(sanitize_text_field( $input['production_domain_0'] ));
 		}
 
+		// @TODO better would be to parse URLs now and validate them.
 		if ( isset( $input['urls_to_match'] ) ) {
-			$sanitary_values['urls_to_match'] = esc_textarea( $input['urls_to_match'] );
+			$sanitary_values['urls_to_match'] = esc_textarea( sanitize_textarea_field( $input['urls_to_match'] ) );
 		}
 
 		return $sanitary_values;
@@ -101,7 +102,7 @@ class Disguises {
 	public function urls_to_match_callback() {
 		printf(
 			'<textarea class="large-text" rows="5" name="disguises_option_name[urls_to_match]" id="urls_to_match">%s</textarea>',
-			isset( $this->disguises_options['urls_to_match'] ) ? esc_attr( $this->disguises_options['urls_to_match']) : ''
+			isset( $this->disguises_options['urls_to_match'] ) ? esc_textarea( $this->disguises_options['urls_to_match']) : ''
 		);
 	}
 
