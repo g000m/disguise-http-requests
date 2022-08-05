@@ -28,6 +28,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 if ( ! function_exists( __NAMESPACE__ . '\autoloader_classmap' ) ) {
 	require_once __DIR__ . '/src/functions.php';
 
+	if ( is_admin() ) {
+		require_once __DIR__ . '/src/Disguises.php';
+	}
 	return;
 }
 

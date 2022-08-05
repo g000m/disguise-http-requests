@@ -35,17 +35,27 @@ function disguise_request_args( $args, $url ) {
 	// @TODO add matched urls via settings
 	// @TODO add support for partial matches
 
-	$urls  = [
+	$disguises_options = get_option( 'disguises_option_name' ); // Array of All Options
+	$production_domain = wp_http_validate_url($disguises_options['production_domain_0']); // Production domain
+
+	if( ! $production_domain ) {
+		// URL not valid
+		return $args;
+	}
+
+	$urls_to_match = $disguises_options['urls_to_match'];
+	$urls = explode( "\r\n", $urls_to_match );
+	/*$urls  = [
 		'https://jvqo6bncab.execute-api.us-east-2.amazonaws.com/v1/verify/',
 		'https://update.buddyboss.com/theme',
 		'https://update.buddyboss.com/plugin',
 		'https://appcenter.buddyboss.com/wp-json/center/v1/update-app-info',
 		'http://23.23.102.166/sl/public/api/*',
 		'http://members.ambitionally.com/hosted_plugin/*'
-	];
+	];*/
 	$hosts = array(
-		'local'    => str_replace( [ 'https://', 'http://' ], '', home_url() ),
-		'licensed' => 'members.evolutionaryherbalism.com'
+		'local'    => strip_url_protocol(home_url()),
+		'licensed' => strip_url_protocol( $production_domain)
 	);
 
 	$args2 = $args;
@@ -60,7 +70,16 @@ function disguise_request_args( $args, $url ) {
 }
 
 /**
- * @param $url
+ * @param string $url
+ *
+ * @return string
+ */
+function strip_url_protocol( string $url): string {
+	return str_replace( [ 'https://', 'http://' ], '', $url );
+}
+
+/**
+ * @param $requested_url
  * @param array $urls
  *
  * @return bool
@@ -90,7 +109,9 @@ function matched_url( $requested_url, array $urls ): bool {
 function fix_hostnames(): \Closure {
 	return function ( &$value, $key, $host ) {
 		if ( gettype( $host['local'] ) === 'string' && gettype( $value ) === 'string' && strpos( $value, $host['local'] ) !== false && $key !== "sslcertificates" && ! is_serialized( $value ) ) {
+			error_log( "fixing hostname: " . $value );
 			$value = str_replace( $host['local'], $host['licensed'], $value );
+			error_log( "fixed hostname: " . $value );
 
 		} elseif ( is_serialized( $value ) ) {
 			$unserialized_value = unserialize( $value );
